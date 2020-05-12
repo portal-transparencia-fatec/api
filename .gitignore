@@ -1,0 +1,10 @@
+.history/
+files/
+node_modules/
+.env/
+.env.development/
+nohup.out
+
+tmp/anexosCompactados/*
+tmp/data/*
+tmp/uploads/*
