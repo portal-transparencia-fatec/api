@@ -11,7 +11,8 @@ routes.use(function (req, res, next) {
 })
 
 const {
-  ApiController
+  ApiController,
+  OCRController,
 } = requireDir('./app/controllers')
 
 const {
@@ -22,6 +23,7 @@ const {
 routes.get('/servidores', ApiController.getServidores)
 routes.get('/servidores/:rgf', ApiController.getServidor)
 
+routes.get('/ocr', OCRController.getInfosPDF)
 routes.use(ErrorMiddleware)
 
 module.exports = routes
