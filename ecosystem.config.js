@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'neorodas',
+      name: 'api',
       script: './index.js',
       env: {
         NODE_ENV: 'development'

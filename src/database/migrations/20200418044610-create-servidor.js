@@ -2,58 +2,59 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('noticias', {
+    return queryInterface.createTable('servidor', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
       },
-      titulo: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      descricaoResumida: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      pathImgDestaque: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      categoria: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      permissoes: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      body: {
-        type: Sequelize.TEXT,
-        allowNull: false
-      },
-      autor_id: {
+      rgf: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      qtdAcesso: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0,
+      nome: {
+        type: Sequelize.STRING,
         allowNull: false
+      },
+      cargo: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      referencia: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      regime: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      bruto: {
+        type: Sequelize.DECIMAL(10,2),
+        allowNull: false,
+      },
+      liquido: {
+        type: Sequelize.DECIMAL(10,2),
+        allowNull: false,
+      },
+      desconto: {
+        type: Sequelize.DECIMAL(10,2),
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
+        defaultValue: Sequelize.fn('now'),
         type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
+        defaultValue: Sequelize.fn('now'),
         type: Sequelize.DATE
       }
     })
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('noticias')
+    return queryInterface.dropTable('servidor')
   }
 }
