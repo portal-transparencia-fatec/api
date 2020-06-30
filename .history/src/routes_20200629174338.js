@@ -3,7 +3,6 @@ const routes = require('express').Router()
 const requireDir = require('require-dir')
 const fs = require('fs')
 const app = express()
-const path = require('path')
 
 routes.use(express.urlencoded({ extended: true }))
 
@@ -45,11 +44,6 @@ routes.put('/servidores', ServidorController.atualizar)
  * OCR
  */
 routes.get('/ocr', OCRController.getInfosPDF)
-
-routes.get('/img/random', (req, res) => {
-  const random = Math.floor(Math.random() * 5) + 1  
-  res.sendFile(path.resolve(__dirname, '..', 'tmp', 'random', `${random}.jpg`));
-});
 
 routes.use(ErrorMiddleware)
 
