@@ -36,7 +36,13 @@ routes.put('/usuarios', UsuarioController.atualizar)
  */
 
 routes.get('/servidores', ServidorController.listar)
+routes.get('/servidores/cargos/', ServidorController.getAllCargos)
+routes.get('/servidores/regimes/', ServidorController.getAllRegimes)
+routes.get('/servidores/grafico/salarios/:rgf', ServidorController.getAllSalariosByRgf)
+
 routes.get('/servidores/:id', ServidorController.listarPorId)
+
+
 routes.post('/servidores', ServidorController.criar)
 routes.delete('/servidores/:id', ServidorController.excluir)
 routes.put('/servidores', ServidorController.atualizar)
