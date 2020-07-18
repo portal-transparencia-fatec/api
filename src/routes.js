@@ -35,10 +35,15 @@ routes.put('/usuarios', UsuarioController.atualizar)
  * Servidor
  */
 
-routes.get('/servidores', ServidorController.listar)
+routes.get('/servidores', ServidorController.middlewareRequest,ServidorController.listar)
 routes.get('/servidores/cargos/', ServidorController.getAllCargos)
+routes.get('/servidores/nome/:nome', ServidorController.getAllByNome)
 routes.get('/servidores/regimes/', ServidorController.getAllRegimes)
+routes.post('/servidores/grafico/salarios', ServidorController.getAllSalariosByRgfs)
 routes.get('/servidores/grafico/salarios/:rgf', ServidorController.getAllSalariosByRgf)
+
+
+
 
 routes.get('/servidores/:id', ServidorController.listarPorId)
 

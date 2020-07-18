@@ -77,6 +77,42 @@ class ServidorController {
     }
   }
 
+  async getAllByNome (req, res, next) {
+    const { nome } = req.params
+    try{
+      const servidores = await servidorCore.getAllByNome(nome)
+      res.json(servidores)
+    }catch(err) {
+      next(err)
+    }
+  }
+
+
+  async getAllSalariosByRgfs (req, res, next) {
+    try{
+      const chart = await servidorCore.getAllSalariosByRgfs(req.body)
+      res.json(chart)
+    }catch(err) {
+      next(err)
+    }
+  }
+
+
+  async middlewareRequest ({ query: { filters, dataInicial, dataFinal }, ...req }, res, next) {
+    try {
+      const ip = await servidorCore.getPublicIP();
+      await servidorCore.relatorioPesquisa(ip, dataInicial, dataFinal, filters || {})
+    }catch(err) {
+      console.log(err)
+    }
+    next()
+
+  }
+  
+
+  
+  
+
 }
 
 module.exports = new ServidorController()
